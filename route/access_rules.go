@@ -73,7 +73,7 @@ func (t *Target) AccessDeniedTCP(c net.Conn) bool {
 	}
 	// check remote connection address
 	if t.denyByIP(addr.IP) {
-			return true
+		return true
 	}
 	// default allow
 	return false

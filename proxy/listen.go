@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net"
 	"time"
-
-	proxyproto "github.com/armon/go-proxyproto"
 )
 
 func ListenTCP(laddr string, cfg *tls.Config) (net.Listener, error) {
@@ -23,9 +21,6 @@ func ListenTCP(laddr string, cfg *tls.Config) (net.Listener, error) {
 
 	// enable TCPKeepAlive support
 	ln = tcpKeepAliveListener{ln.(*net.TCPListener)}
-
-	// enable PROXY protocol support
-	ln = &proxyproto.Listener{Listener: ln}
 
 	// enable TLS
 	if cfg != nil {
